@@ -30,9 +30,14 @@ public class DataXJobService {
      */
     private List<String> getJobs() {
         // 读取 jobPath 目录下的文件
-        return SystemUtils.findEnableJsonFiles(dataXProperties.getJobPath());
+        List<String> jobs = SystemUtils.findEnableJsonFiles(dataXProperties.getJobPath());
+        log.info("jobs: {}", jobs);
+        return jobs;
     }
 
+    /**
+     * 执行 DataX 任务
+     */
     public void execute() {
         List<String> jobs = getJobs();
         jobs.forEach(job -> {
