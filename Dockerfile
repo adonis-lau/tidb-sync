@@ -1,7 +1,7 @@
 FROM bellsoft/liberica-openjdk-alpine:21
 #FROM openjdk:21-slim
 #FROM eclipse-temurin:21-jre-noble
-LABEL authors="Adonis.liu"
+LABEL authors="adonis.liu"
 
 WORKDIR /app
 # 将本地的 JAR 文件复制到容器中
