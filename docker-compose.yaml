@@ -15,5 +15,6 @@ services:
     volumes:
       - ./logs:/app/logs
       - ./job:/app/datax/job
+      - ./config:/app/config
     restart: unless-stopped
     network_mode: bridge
