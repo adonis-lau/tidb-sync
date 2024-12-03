@@ -1,0 +1,16 @@
+services:
+  tidb-sync:
+    container_name: tidb-sync
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - TZ=Asia/Shanghai
+      - SPRING_PROFILES_ACTIVE=local
+      # DataX 任务结束后继续下一个任务的时间间隔, 单位: 毫秒
+      - SCHEDULED_DATAX_TASK_FIXEDDELAY=5000
+    volumes:
+      - ./logs:/app/logs
+      - ./job:/app/datax/job
+    restart: unless-stopped
+    network_mode: bridge
