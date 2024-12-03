@@ -1,7 +1,7 @@
 package com.sinoeyes.sync.scheduler;
 
-import com.sinoeyes.sync.service.datax.DataXJobService;
 import com.sinoeyes.sync.properties.DataXProperties;
+import com.sinoeyes.sync.service.datax.DataXJobService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -30,8 +30,11 @@ public class DataXScheduler {
      */
     @Scheduled(fixedDelayString = "${scheduled.datax.task.fixedDelay}")
     public void runTask() {
+        log.info("********************************************");
         log.info("DataX Scheduler Run, fixedDelay is {}", dataXProperties.getFixedDelay());
         // 在这里添加你希望定时执行的代码
         dataXJobService.execute();
+        log.info("DataX Scheduler Run End");
+        log.info("********************************************");
     }
 }

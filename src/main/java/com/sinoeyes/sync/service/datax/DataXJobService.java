@@ -49,6 +49,7 @@ public class DataXJobService {
             } catch (Throwable e) {
                 log.error(e.getLocalizedMessage(), e);
             }
+            log.info("job {} exec success", job);
         });
     }
 }

@@ -5,11 +5,7 @@ import org.eu.cn.apache.utils.SystemUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.ConfigurableApplicationContext;
-import com.alibaba.fastjson2.JSON;
 import org.springframework.scheduling.annotation.EnableScheduling;
-
-import java.util.Map;
 
 @Slf4j
 @EnableScheduling
