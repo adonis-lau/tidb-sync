@@ -16,5 +16,5 @@ services:
       - ./logs:/app/logs
       - ./job:/app/datax/job
       - ./config:/app/config
-    restart: unless-stopped
+    restart: no
     network_mode: bridge
