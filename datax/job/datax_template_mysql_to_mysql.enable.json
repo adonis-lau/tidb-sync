@@ -42,10 +42,10 @@
                         ],
                         "connection": [
                             {
+                                "jdbcUrl": "jdbc:mysql://hostname:port/?useUnicode=true&characterEncoding=UTF-8&useSSL=false",
                                 "table": [
                                     "database.table"
-                                ],
-                                "jdbcUrl": "jdbc:mysql://hostname:port/?useUnicode=true&characterEncoding=UTF-8&useSSL=false"
+                                ]
                             }
                         ]
                     }

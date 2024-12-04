@@ -3,11 +3,15 @@ package com.sinoeyes.sync.service.datax;
 import com.alibaba.datax.core.Engine;
 import com.sinoeyes.sync.properties.DataXProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.eu.cn.apache.utils.DataXUtils;
+import org.eu.cn.apache.utils.DateUtils;
 import org.eu.cn.apache.utils.SystemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author adonis lau
@@ -41,10 +45,17 @@ public class DataXJobService {
     public void execute() {
         List<String> jobs = getJobs();
         jobs.forEach(job -> {
-            // 执行任务
-            log.info("execute job: {}", job);
-            String[] datxArgs2 = {"-job", job, "-mode", "standalone", "-jobid", "-1"};
             try {
+                // 执行任务
+                log.info("execute job: {}", job);
+                String writerMaxUpdateTime = DataXUtils.getWriterMaxUpdateTime(job);
+                if (StringUtils.isBlank(writerMaxUpdateTime)) {
+                    String readerMinUpdateTime = DataXUtils.getReaderMinUpdateTime(job);
+                    writerMaxUpdateTime = DateUtils.dateTime(DateUtils.addDays(Objects.requireNonNull(DateUtils.parseDate(readerMinUpdateTime)), -1));
+                }
+                System.setProperty("writerMaxUpdateTime", writerMaxUpdateTime);
+                String[] datxArgs2 = {"-job", job, "-mode", "standalone", "-jobid", "-1"};
+
                 Engine.entry(datxArgs2);
             } catch (Throwable e) {
                 log.error(e.getLocalizedMessage(), e);

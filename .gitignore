@@ -32,5 +32,6 @@ build/
 ### VS Code ###
 .vscode/
 /datax/job/*.local.json
+/datax/job/*.local.*.json
 /logs/
 /job/

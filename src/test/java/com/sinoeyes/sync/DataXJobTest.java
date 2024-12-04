@@ -2,8 +2,11 @@ package com.sinoeyes.sync;
 
 import com.alibaba.datax.core.Engine;
 import lombok.extern.slf4j.Slf4j;
+import org.eu.cn.apache.utils.DataXUtils;
 import org.eu.cn.apache.utils.SystemUtils;
 import org.junit.jupiter.api.Test;
+
+import java.sql.SQLException;
 
 /**
  * @author adonis lau
@@ -29,4 +32,9 @@ public class DataXJobTest {
         }
     }
 
+    @Test
+    public void dataxUtilsTest() throws SQLException, ClassNotFoundException {
+        String maxUpdateTime = DataXUtils.getWriterMaxUpdateTime("C:\\Users\\Adonis.liu\\Workspaces\\Code\\tidb-sync\\job\\uat2_proj_0015.fl_std_month_sale_view_sync_table.enable.json");
+        log.info("maxUpdateTime: {}", maxUpdateTime);
+    }
 }
