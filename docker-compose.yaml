@@ -1,7 +1,7 @@
 services:
   tidb-sync:
     container_name: tidb-sync
-    image: tidb-sync:latest
+    image: hub.sinoeyes.com/data-technology/tidb-sync:latest
     build:
       context: .
       dockerfile: Dockerfile
