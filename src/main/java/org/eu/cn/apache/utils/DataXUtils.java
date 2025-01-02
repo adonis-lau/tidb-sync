@@ -61,7 +61,7 @@ public class DataXUtils {
         try {
             String driver = DatabaseType.of(writerName).getDriver();
             conn = DatabaseUtils.getConnection(jdbcUrl, username, password, driver);
-            String sql = String.format("select max(paas_update_time) from %s", table);
+            String sql = String.format("select max(view_update_time) from %s", table);
             resultSet = DatabaseUtils.executeQuery(conn, sql);
             if (resultSet.next()) {
                 return resultSet.getString(1);
@@ -95,7 +95,7 @@ public class DataXUtils {
         try {
             String driver = DatabaseType.of(readerName).getDriver();
             conn = DatabaseUtils.getConnection(jdbcUrl, username, password, driver);
-            String sql = String.format("select min(paas_update_time) from %s", table);
+            String sql = String.format("select min(view_update_time) from %s", table);
             resultSet = DatabaseUtils.executeQuery(conn, sql);
             if (resultSet.next()) {
                 return resultSet.getString(1);
