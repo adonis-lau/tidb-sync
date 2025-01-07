@@ -9,6 +9,8 @@
 
 
 推送 Docker 镜像到 Harbor
+```shell
 docker login hub.sinoeyes.com
 docker tag tidb-sync:latest hub.sinoeyes.com/data-technology/tidb-sync:latest
 docker push hub.sinoeyes.com/data-technology/tidb-sync:latest
+```
