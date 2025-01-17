@@ -50,7 +50,6 @@
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="CONSOLE" />
         <appender-ref ref="LOGFILE"/>
     </root>
 </configuration>
