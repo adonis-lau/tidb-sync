@@ -51,6 +51,9 @@ public class DataXJobService {
                 String writerMaxUpdateTime = DataXUtils.getWriterMaxUpdateTime(job);
                 if (StringUtils.isBlank(writerMaxUpdateTime)) {
                     String readerMinUpdateTime = DataXUtils.getReaderMinUpdateTime(job);
+                    if (StringUtils.isBlank(readerMinUpdateTime)) {
+                        throw new Exception(String.format("readerMinUpdateTime is null, job: %s", job));
+                    }
                     writerMaxUpdateTime = DateUtils.dateTime(DateUtils.addDays(Objects.requireNonNull(DateUtils.parseDate(readerMinUpdateTime)), -1));
                 }
                 System.setProperty("writerMaxUpdateTime", writerMaxUpdateTime);
