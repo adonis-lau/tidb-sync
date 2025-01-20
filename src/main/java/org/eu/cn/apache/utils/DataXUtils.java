@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSONObject;
 import com.sinoeyes.sync.enums.DatabaseType;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.ResourceUtils;
 
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 /**
  * DataX工具类
@@ -64,7 +66,12 @@ public class DataXUtils {
             String sql = String.format("select max(view_update_time) from %s", table);
             resultSet = DatabaseUtils.executeQuery(conn, sql);
             if (resultSet.next()) {
-                return resultSet.getString(1);
+                String timeStr = resultSet.getString(1);
+                if (StringUtils.isNotBlank(timeStr)) {
+                    // 将最大时间往前提十分钟
+                    timeStr = DateUtils.dateTime(DateUtils.addMinutes(DateUtils.parseDate(timeStr), -10));
+                }
+                return timeStr;
             }
         } finally {
             DatabaseUtils.close(conn, resultSet);
