@@ -32,7 +32,7 @@ public class DataXScheduler {
     @Scheduled(cron = "${scheduled.datax.task.cron}")
     public void runTask() {
         log.info("********************************************");
-        log.info("DataX Scheduler Run, fixedDelay is {}", dataXProperties.getFixedDelay());
+        log.info("DataX Scheduler Run, cron is {}", dataXProperties.getCron());
         // 在这里添加你希望定时执行的代码
         dataXJobService.execute();
         log.info("DataX Scheduler Run End");

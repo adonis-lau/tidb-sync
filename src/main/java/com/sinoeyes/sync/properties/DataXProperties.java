@@ -23,4 +23,9 @@ public class DataXProperties {
      * DataX 任务后续时间间隔
      */
     private long fixedDelay;
+
+    /**
+     * DataX 任务后续时间间隔
+     */
+    private long cron;
 }

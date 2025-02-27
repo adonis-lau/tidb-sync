@@ -10,7 +10,7 @@ services:
       - SPRING_PROFILES_ACTIVE=local
       # DataX 任务结束后继续下一个任务的时间间隔, 单位: 毫秒
       - SCHEDULED_DATAX_TASK_FIXEDDELAY=600000
-      # DataX 任务结束后继续下一个任务的时间间隔, 单位: 毫秒
+      # DataX 任务的执行时间表达式
       - SCHEDULED_DATAX_TASK_CRON=1 1 6,20 * * ?
       # DataX 任务目录
       - SCHEDULED_DATAX_TASK_JOBPATH=/app/datax/job
