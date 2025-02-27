@@ -28,7 +28,8 @@ public class DataXScheduler {
      * fixedDelay: 在上一次任务执行完成后，等待指定的时间间隔再执行下一次任务，单位是毫秒。
      * cron: 使用 cron 表达式来指定任务的执行时间。
      */
-    @Scheduled(fixedDelayString = "${scheduled.datax.task.fixedDelay}")
+//    @Scheduled(fixedDelayString = "${scheduled.datax.task.fixedDelay}")
+    @Scheduled(cron = "${scheduled.datax.task.cron}")
     public void runTask() {
         log.info("********************************************");
         log.info("DataX Scheduler Run, fixedDelay is {}", dataXProperties.getFixedDelay());
